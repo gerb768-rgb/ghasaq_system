@@ -1,13 +1,13 @@
 // أضف هذا الاستيراد في أعلى main.dart
-import 'screens/add_medication_screen.dart';
+import 'screens/inventory_screen.dart';
 
-// داخل الـ Column في main.dart، أضف هذا الزر بجانب زر الصيدلية
+// داخل الـ Column في main.dart، أضف هذا الزر
 ElevatedButton(
   onPressed: () {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const AddMedicationScreen()),
+      MaterialPageRoute(builder: (context) => const InventoryScreen()),
     );
   },
-  child: const Text("إضافة دواء للمخزن"),
+  child: const Text("عرض المخزون والجرد"),
 ),
