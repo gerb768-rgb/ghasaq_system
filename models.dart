@@ -1,13 +1,8 @@
-// أضف هذا الاستيراد في أعلى main.dart
-import 'screens/inventory_screen.dart';
-
-// داخل الـ Column في main.dart، أضف هذا الزر
-ElevatedButton(
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const InventoryScreen()),
-    );
-  },
-  child: const Text("عرض المخزون والجرد"),
-),
+// منطق بسيط لاكتشاف الأدوية التي تنتهي خلال 3 أشهر
+if (isExpiringSoon(med['expiry_date'])) {
+   return ListTile(
+     title: Text(med['name']),
+     tileColor: Colors.red[100], // تلوين الدواء باللون الأحمر للتنبيه
+     subtitle: Text("انتبه! الدواء يقترب من انتهاء الصلاحية"),
+   );
+}
