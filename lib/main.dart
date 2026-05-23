@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'models.dart'; 
+import 'screens/pharmacy_screen.dart'; // استيراد شاشة الصيدلية
 
 void main() => runApp(const GhasaqApp());
 
@@ -17,6 +18,16 @@ class GhasaqApp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text("مرحباً بك في نظام غسق المتكامل", style: TextStyle(fontSize: 20)),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const PharmacyScreen()),
+                  );
+                },
+                child: const Text("ابدأ العمليات (الصيدلية)"),
+              ),
             ],
           ),
         ),
