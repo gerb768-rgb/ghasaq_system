@@ -1,37 +1,13 @@
-import 'package:flutter/material.dart';
-import 'models.dart'; 
-import 'screens/pharmacy_screen.dart'; // استيراد شاشة الصيدلية
+class Medication {
+  final String name;
+  final double price;
 
-void main() => runApp(const GhasaqApp());
-
-class GhasaqApp extends StatelessWidget {
-  const GhasaqApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(title: const Text("نظام غسق للإدارة")),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text("مرحباً بك في نظام غسق المتكامل", style: TextStyle(fontSize: 20)),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const PharmacyScreen()),
-                  );
-                },
-                child: const Text("ابدأ العمليات (الصيدلية)"),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+  Medication(this.name, this.price);
 }
+
+// هذه هي قائمة الأدوية الفعلية في نظامك
+final List<Medication> pharmacyItems = [
+  Medication("بندول", 15.5),
+  Medication("أموكسيسيلين", 45.0),
+  Medication("فيتامين C", 20.0),
+];
