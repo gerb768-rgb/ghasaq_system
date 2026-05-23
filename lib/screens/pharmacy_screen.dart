@@ -1,37 +1,37 @@
 import 'package:flutter/material.dart';
-import 'models.dart'; 
-import 'screens/pharmacy_screen.dart'; // استيراد ملف الشاشة الذي أنشأناه للتو
+import '../models.dart';
 
-void main() => runApp(const GhasaqApp());
-
-class GhasaqApp extends StatelessWidget {
-  const GhasaqApp({super.key});
+class PharmacyScreen extends StatefulWidget {
+  const PharmacyScreen({super.key});
 
   @override
+  State<PharmacyScreen> createState() => _PharmacyScreenState();
+}
+
+class _PharmacyScreenState extends State<PharmacyScreen> {
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(title: const Text("نظام غسق للإدارة")),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text("مرحباً بك في نظام غسق المتكامل", style: TextStyle(fontSize: 20)),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  // هذا الكود هو المسؤول عن الانتقال لشاشة الصيدلية
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const PharmacyScreen()),
-                  );
-                },
-                child: const Text("ابدأ العمليات (الصيدلية)"),
-              ),
-            ],
-          ),
-        ),
+    return Scaffold(
+      appBar: AppBar(title: const Text("صرف الأدوية")),
+      body: ListView.builder(
+        itemCount: pharmacyItems.length,
+        itemBuilder: (context, index) {
+          final med = pharmacyItems[index];
+          return ListTile(
+            leading: const Icon(Icons.medication, color: Colors.blue),
+            title: Text(med.name),
+            trailing: Text("${med.price} ر.س"),
+            onTap: () {
+              // إضافة الدواء للفاتورة
+              setState(() {
+                salesCart.add(med);
+              });
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text("تم إضافة ${med.name} للفاتورة")),
+              );
+            },
+          );
+        },
       ),
     );
   }
