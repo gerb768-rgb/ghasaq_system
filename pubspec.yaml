@@ -1,1 +1,14 @@
+name: ghasaq_system
+description: A new Flutter project for Ghasaq Management System.
 
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  sqflite: ^2.3.0
+  path: ^1.9.0
+
+flutter:
+  uses-material-design: true
